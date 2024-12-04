@@ -3,22 +3,22 @@ import Link from "next/link";
 import React from "react";
 
 const menu = [
-  { label: "PBB", href: "/pbb", img: "PBB" },
-  { label: "Listrik", href: "/listrik", img: "Listrik" },
-  { label: "Pulsa", href: "/pulsa", img: "Pulsa" },
-  { label: "PDAM", href: "/pdam", img: "PDAM" },
-  { label: "PGN", href: "/pgn", img: "PGN" },
-  { label: "TV Langganan", href: "/tv-langganan", img: "Televisi" },
-  { label: "Musik", href: "/musik", img: "Musik" },
-  { label: "Voucher Game", href: "/voucher-game", img: "Game" },
+  { label: "PBB", href: "/menu/pbb", img: "PBB" },
+  { label: "Listrik", href: "/menu/listrik", img: "Listrik" },
+  { label: "Pulsa", href: "/menu/pulsa", img: "Pulsa" },
+  { label: "PDAM", href: "/menu/pdam", img: "PDAM" },
+  { label: "PGN", href: "/menu/pgn", img: "PGN" },
+  { label: "TV Langganan", href: "/menu/tv-langganan", img: "Televisi" },
+  { label: "Musik", href: "/menu/musik", img: "Musik" },
+  { label: "Voucher Game", href: "/menu/voucher-game", img: "Game" },
   {
     label: "Voucher Makanan",
-    href: "/voucher-makanan",
+    href: "/menu/voucher-makanan",
     img: "Voucher Makanan",
   },
-  { label: "Kurban", href: "/kurban", img: "Kurban" },
-  { label: "Zakat", href: "/zakat", img: "Zakat" },
-  { label: "Paket Data", href: "/paket-data", img: "Paket Data" },
+  { label: "Kurban", href: "/menu/kurban", img: "Kurban" },
+  { label: "Zakat", href: "/menu/zakat", img: "Zakat" },
+  { label: "Paket Data", href: "/menu/paket-data", img: "Paket Data" },
 ];
 const banners = 5;
 
