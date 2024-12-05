@@ -26,8 +26,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     };
   }, [isOpen, onClose]);
 
-  // if (!isOpen) return null;
-
   return (
     <dialog id="confirm-payment" className="modal">
       <div className="modal-box">
