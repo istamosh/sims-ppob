@@ -3,11 +3,11 @@ import React, { ReactNode } from "react";
 const AuthLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   console.log("AuthLayout");
   return (
-    <div
-      id="auth-layout"
-      className="flex justify-between items-center w-screen h-screen"
-    >
-      <div id="auth-form" className="flex justify-center grow px-4">
+    <div id="auth-layout" className="flex justify-between w-screen h-screen">
+      <div
+        id="auth-form"
+        className="flex justify-center grow px-4 overflow-y-scroll"
+      >
         {children}
       </div>
       <div id="auth-image" className="hidden sm:block max-w-[50%] max-h-screen">
