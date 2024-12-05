@@ -25,11 +25,11 @@ const banners = 5;
 const DashboardMenu = () => {
   return (
     <div className="flex flex-col">
-      <ul className="flex justify-between 2xl:justify-evenly gap-1 w-full overflow-x-auto">
+      <ul className="flex justify-center flex-wrap 2xl:justify-evenly gap-1 w-full overflow-x-auto">
         {menu.map((item, i) => (
           <li
             key={`menu-${i}`}
-            className="min-w-[75px] max-w-[100px] border border-red-500"
+            className="min-w-[75px] w-[75px] border border-red-500"
           >
             <Link
               href={item.href}
@@ -41,7 +41,9 @@ const DashboardMenu = () => {
                 width={50}
                 height={50}
               />
-              <p className="break-words text-center text-xs">{item.label}</p>
+              <p className="break-words text-center text-xs leading-none">
+                {item.label}
+              </p>
             </Link>
           </li>
         ))}
