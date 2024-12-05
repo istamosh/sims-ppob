@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import UserSection from "./UserSection";
 
 const DashboardLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+  console.log("DashboardLayout");
   return (
     <>
       <Navbar />

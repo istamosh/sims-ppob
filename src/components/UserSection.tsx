@@ -2,7 +2,8 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-const UserSection = () => {
+const UserSection: React.FC = () => {
+  console.log("UserSection");
   const [showBalance, setShowBalance] = useState(false);
 
   const setBalanceVisibility = () => {

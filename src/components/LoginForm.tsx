@@ -3,6 +3,7 @@ import React from "react";
 import Logo from "./Logo";
 
 const LoginForm: React.FC = () => {
+  console.log("LoginForm");
   return (
     <div>
       <form className="flex flex-col gap-y-5">

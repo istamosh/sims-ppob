@@ -15,7 +15,8 @@ const months = [
   "Desember",
 ];
 
-const TransactionMenu = () => {
+const TransactionMenu: React.FC = () => {
+  console.log("TransactionMenu");
   return (
     <div className="flex flex-col">
       <h2 className="font-bold">Semua Transaksi</h2>

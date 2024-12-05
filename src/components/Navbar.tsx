@@ -2,7 +2,8 @@ import React from "react";
 import Logo from "./Logo";
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  console.log("Navbar");
   return (
     <div className="flex justify-between py-2 px-4 border border-red-500">
       <Link href="/dashboard">

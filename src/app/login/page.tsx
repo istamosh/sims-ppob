@@ -2,7 +2,8 @@ import AuthLayout from "@/components/AuthLayout";
 import LoginForm from "@/components/LoginForm";
 import React from "react";
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
+  console.log("LoginPage");
   return (
     <AuthLayout>
       <LoginForm />

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
-const AccountForm = () => {
+const AccountForm: React.FC = () => {
+  console.log("AccountForm");
   return (
     <div className="flex flex-col items-center w-1/2 mx-auto">
       <button className="relative my-4">

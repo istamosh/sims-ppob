@@ -22,7 +22,9 @@ const captions = {
 
 type SlugType = keyof typeof captions;
 
-const MenuPage = () => {
+const MenuPage: React.FC = () => {
+  console.log("MenuPage");
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { slug } = useParams() as { slug: SlugType };
 

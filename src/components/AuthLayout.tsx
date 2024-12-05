@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 
 const AuthLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+  console.log("AuthLayout");
   return (
     <div
       id="auth-layout"

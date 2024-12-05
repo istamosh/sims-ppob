@@ -1,11 +1,65 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { FormEvent, useState } from "react";
 import Logo from "./Logo";
 
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store/store";
+import { registerUser } from "@/store/userSlice";
+
 const RegisterForm: React.FC = () => {
+  console.log("RegisterForm");
+
+  const [firstName, setFirstName] = useState("");
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastName, setLastName] = useState("");
+  const [lastNameError, setLastNameError] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
+  const [retypePassword, setRetypePassword] = useState("");
+  const [retypePasswordError, setRetypePasswordError] = useState(false);
+
+  const dispatch = useDispatch<AppDispatch>();
+  const userState = useSelector((state: RootState) => state.user);
+
+  const validateName = (val: string) => /^[A-Za-z]{4,}$/g.test(String(val));
+  const validateEmail = (val: string) =>
+    /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(String(val).toLowerCase());
+  const validatePassword = (val: string) => /^.{8,}$/g.test(String(val));
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!validateName(firstName)) {
+      setFirstNameError(true);
+      return;
+    }
+    if (!validateEmail(email)) {
+      setEmailError(true);
+      return;
+    }
+    if (!validatePassword(password)) {
+      setPasswordError(true);
+      return;
+    }
+    if (password !== retypePassword) {
+      setRetypePasswordError(true);
+      return;
+    }
+
+    setFirstNameError(false);
+    setEmailError(false);
+    setPasswordError(false);
+    setRetypePasswordError(false);
+
+    dispatch(registerUser({ firstName, lastName, email, password }));
+  };
+
   return (
     <div>
-      <form className="flex flex-col gap-y-5">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-y-5">
         <Logo />
         <h1 className="font-bold text-xl text-center">
           Lengkapi data untuk membuat akun
@@ -22,6 +76,8 @@ const RegisterForm: React.FC = () => {
           </svg>
           <input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Masukkan email Anda"
             className="grow"
           />
@@ -35,7 +91,13 @@ const RegisterForm: React.FC = () => {
           >
             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
           </svg>
-          <input type="text" placeholder="Nama depan" className="grow" />
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Nama depan"
+            className="grow"
+          />
         </label>
         <label className="input input-sm py-5 input-bordered flex items-center gap-2">
           <svg
@@ -46,7 +108,13 @@ const RegisterForm: React.FC = () => {
           >
             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
           </svg>
-          <input type="text" placeholder="Nama belakang" className="grow" />
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Nama belakang"
+            className="grow"
+          />
         </label>
         <label className="input input-sm py-5 input-bordered flex items-center gap-2">
           <svg
@@ -61,7 +129,13 @@ const RegisterForm: React.FC = () => {
               clipRule="evenodd"
             />
           </svg>
-          <input type="password" placeholder="Buat password" className="grow" />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Buat password"
+            className="grow"
+          />
         </label>
         <label className="input input-sm py-5 input-bordered flex items-center gap-2">
           <svg
@@ -92,6 +166,9 @@ const RegisterForm: React.FC = () => {
           di sini.
         </Link>
       </p>
+      debug
+      {userState.status === "loading" && <p>Loading...</p>}
+      {userState.status === "failed" && <p>Error: {userState.error}</p>}
     </div>
   );
 };

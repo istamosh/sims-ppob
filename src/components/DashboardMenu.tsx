@@ -22,7 +22,8 @@ const menu = [
 ];
 const banners = 5;
 
-const DashboardMenu = () => {
+const DashboardMenu: React.FC = () => {
+  console.log("DashboardMenu");
   return (
     <div className="flex flex-col">
       <ul className="flex justify-center flex-wrap 2xl:justify-evenly gap-1 w-full overflow-x-auto">

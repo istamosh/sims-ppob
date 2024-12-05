@@ -1,3 +1,4 @@
+"use client";
 import React, { ReactNode, useEffect } from "react";
 
 type ModalProps = {
@@ -7,6 +8,8 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  console.log("Modal");
+
   // add listener for esc key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

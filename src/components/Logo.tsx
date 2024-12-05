@@ -1,6 +1,7 @@
 import React from "react";
 
-const Logo = () => {
+const Logo: React.FC = () => {
+  console.log("Logo");
   return (
     <div className="flex justify-center gap-x-1">
       <img src="/assets/Logo.png" alt="logo sims-ppob" />
