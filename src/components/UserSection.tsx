@@ -3,7 +3,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 const UserSection: React.FC = () => {
-  console.log("UserSection");
   const [showBalance, setShowBalance] = useState(false);
 
   const setBalanceVisibility = () => {
@@ -13,7 +12,7 @@ const UserSection: React.FC = () => {
   return (
     <div className="flex gap-4 mb-4">
       <div className="w-2/5 border border-red-500">
-        <img src="/assets/Profile Photo.png" alt="" />
+        <Image src="/assets/Profile Photo.png" alt="" />
         <p>Selamat datang,</p>
         <p className="font-bold text-2xl">John Wick</p>
       </div>

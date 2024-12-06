@@ -30,7 +30,9 @@ const RegisterForm: React.FC = () => {
   useEffect(() => {
     setDisplayToast(true);
     const timer = setTimeout(() => {
-      userState.status === "succeeded" && router.push("/login");
+      if (userState.status === "succeeded") {
+        router.push("/login");
+      }
       setDisplayToast(false);
     }, 1000);
     return () => clearTimeout(timer);

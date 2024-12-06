@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { ReactNode } from "react";
 
 const AuthLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -10,7 +11,7 @@ const AuthLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
         {children}
       </div>
       <div id="auth-image" className="hidden sm:block max-w-[50%] max-h-screen">
-        <img
+        <Image
           src="/assets/Illustrasi Login.png"
           alt="Side Image"
           className="max-h-screen max-w-full object-fill"
