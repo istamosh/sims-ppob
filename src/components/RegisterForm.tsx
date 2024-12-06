@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { FormEvent, useEffect, useState } from "react";
 import Logo from "./Logo";
+import { useRouter } from "next/navigation";
 
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
@@ -19,8 +20,21 @@ const RegisterForm: React.FC = () => {
   const [retypePassword, setRetypePassword] = useState("");
   const [retypePasswordError, setRetypePasswordError] = useState(false);
 
+  const [displayToast, setDisplayToast] = useState(false);
+
+  const router = useRouter();
+
   const dispatch = useDispatch<AppDispatch>();
   const userState = useSelector((state: RootState) => state.user);
+
+  useEffect(() => {
+    setDisplayToast(true);
+    const timer = setTimeout(() => {
+      userState.status === "succeeded" && router.push("/login");
+      setDisplayToast(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [userState.status, router]);
 
   useEffect(() => {
     setRetypePasswordError(password !== retypePassword ? true : false);
@@ -32,7 +46,7 @@ const RegisterForm: React.FC = () => {
     setFirstNameError(!re.test(val) ? true : false);
   };
   const validateLastName = (val: string) => {
-    const re = /^[A-Za-z]*$/g;
+    const re = /^[A-Za-z]{1,}$/g;
     setLastName(val);
     setLastNameError(!re.test(val) ? true : false);
   };
@@ -59,9 +73,15 @@ const RegisterForm: React.FC = () => {
     ) {
       return;
     }
-    console.log("HEHE");
 
-    // dispatch(registerUser({ firstName, lastName, email, password }));
+    dispatch(
+      registerUser({
+        email,
+        first_name: firstName,
+        last_name: lastName,
+        password,
+      })
+    );
   };
 
   return (
@@ -159,6 +179,7 @@ const RegisterForm: React.FC = () => {
               onChange={(e) => validateLastName(e.target.value)}
               placeholder="Nama belakang"
               className="grow"
+              required
             />
           </label>
           <div className="label">
@@ -242,10 +263,16 @@ const RegisterForm: React.FC = () => {
             </span>
           </div>
         </label>
-
-        <button type="submit" className="btn bg-red-500 text-white mt-4">
-          Registrasi
-        </button>
+        {displayToast ? (
+          <button className="btn btn-disabled no-animation">
+            <span className="loading loading-spinner"></span>
+            Loading
+          </button>
+        ) : (
+          <button type="submit" className="btn bg-red-500 text-white mt-4">
+            Registrasi
+          </button>
+        )}
       </form>
       <p className="text-sm text-center pt-5">
         Sudah punya akun? login{" "}
@@ -253,9 +280,24 @@ const RegisterForm: React.FC = () => {
           di sini.
         </Link>
       </p>
-      debug
-      {userState.status === "loading" && <p>Loading...</p>}
-      {userState.status === "failed" && <p>Error: {userState.error}</p>}
+      {displayToast && (
+        <div className="toast">
+          <div
+            className={`alert${
+              userState.status === "failed"
+                ? ` alert-error`
+                : userState.status === "succeeded" && ` alert-success`
+            }`}
+          >
+            <span className="text-white font-bold text-sm">
+              {userState.status === "failed"
+                ? userState.error
+                : userState.status === "succeeded" &&
+                  `Registrasi berhasil! Akan diarahkan ke halaman login.`}
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,9 +1,9 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import Logo from "./Logo";
 
 const LoginForm: React.FC = () => {
-  console.log("LoginForm");
   return (
     <div>
       <form className="flex flex-col gap-y-5">
@@ -22,9 +22,10 @@ const LoginForm: React.FC = () => {
             <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
           </svg>
           <input
-            type="text"
+            type="email"
             placeholder="Masukkan email Anda"
             className="grow"
+            required
           />
         </label>
         <label className="input input-sm py-5 input-bordered flex items-center gap-2">
@@ -44,6 +45,7 @@ const LoginForm: React.FC = () => {
             type="password"
             placeholder="Masukkan password Anda"
             className="grow"
+            required
           />
         </label>
         <button type="submit" className="btn bg-red-500 text-white mt-4">

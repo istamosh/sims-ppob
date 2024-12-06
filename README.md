@@ -1,4 +1,16 @@
+# SIMS-PPOB-Alfian Project Documentation
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Table of Contents
+
+- [SIMS-PPOB-Alfian Project Documentation](#sims-ppob-alfian-project-documentation)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+  - [Route List](#route-list)
+  - [Styling Modules](#styling-modules)
+  - [Learn More](#learn-more)
+  - [Deploy on Vercel](#deploy-on-vercel)
 
 ## Getting Started
 
@@ -19,6 +31,29 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Route List
+
+- `/` (will automatically redirect to `/register`)
+- `/register`
+- `/login`
+- `/dashboard`
+- `/account`
+- `/topup`
+- `/transaction`
+- `/menu` with several subroutes:
+  - `/menu/listrik`
+  - `/menu/pdam`
+  - `/menu/tv`
+  - `/menu/pgn`
+  - etc.
+
+## Styling Modules
+
+This project uses the following modules for styling:
+
+- [Tailwind CSS](https://tailwindcss.com) - A utility-first CSS framework for rapid UI development.
+- [DaisyUI](https://daisyui.com) - A plugin for Tailwind CSS that provides a set of accessible and customizable UI components.
 
 ## Learn More
 
